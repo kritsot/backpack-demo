@@ -18,7 +18,7 @@ class CreateInvoiceItemsTable extends Migration
         Schema::create('invoice_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('invoice_id')->constrained();
-            $table->unsignedInteger('order')->nullable();
+            $table->string('order')->nullable();
             $table->text('description');
             $table->float('quantity');
             $table->float('unit_price');

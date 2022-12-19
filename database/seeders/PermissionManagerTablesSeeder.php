@@ -35,14 +35,14 @@ class PermissionManagerTablesSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         DB::table(Config::get('permission.table_names.model_has_roles'))->truncate();
         DB::table(Config::get('permission.table_names.role_has_permissions'))->truncate();
         Permission::truncate();
         Role::truncate();
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         foreach ($this->roles as $role) {
             Role::create(['name' => $role, 'guard_name' => 'web']);

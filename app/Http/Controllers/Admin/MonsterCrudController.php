@@ -831,7 +831,10 @@ class MonsterCrudController extends CrudController
                 'tab'   => 'Relationship',
             ],
 
-            [
+            //repeatable doesn't work as a subfield here
+            //ass Update@getSubfieldsValues throws an error
+
+            /* [
                 'name'    => 'ball',
                 'label'   => 'MorphOne (1-1 polymorphic) <small>+ subfields</small>'.backpack_new_badge(),
                 'wrapper' => [
@@ -841,7 +844,7 @@ class MonsterCrudController extends CrudController
                     [
                         'name'    => 'name',
                         'wrapper' => [
-                            'class' => 'form-group col-md-6',
+                            'class' => 'form-group col-md-4',
                         ],
                     ],
                     [
@@ -849,10 +852,66 @@ class MonsterCrudController extends CrudController
                         'entity'  => 'country',
                         'type'    => 'relationship',
                         'wrapper' => [
-                            'class' => 'form-group col-md-6',
+                            'class' => 'form-group col-md-4',
                         ],
-
                     ],
+                    [
+                        'name'    => 'repeatable_items',
+                        'type'    => 'repeatable',
+                        'label' => 'kritsot',
+                        'wrapper' => [
+                            'class' => 'form-group col-md-4',
+                        ],
+                        'subfields' => [
+                            [
+                                'name'    => 'name',
+                                'type'    => 'text',
+                                'label'   => 'Name',
+                            ]
+                        ]
+                    ],
+                ],
+                'tab'   => 'Relationship',
+            ], */
+            //so we handle the ball relationship fields, to separate fields
+            [
+                'name' => 'ball_header',
+                'type' => 'custom_html',
+                'value' => 'MorphOne (1-1 polymorphic) <small>+ subfields</small>' . backpack_new_badge(),
+                'tab' => 'Relationship',
+            ],
+            [
+                'name'    => 'ball.name',
+                'type'    => 'text',
+                'label' => '',
+                'wrapper' => [
+                    'class' => 'form-group col-md-4',
+                ],
+                'tab'   => 'Relationship',
+            ],
+            [
+                'name'    => 'ball.country',
+                'type'    => 'text',
+                'label' => '',
+                'type'    => 'relationship',
+                'wrapper' => [
+                    'class' => 'form-group col-md-4',
+                ],
+                'tab'   => 'Relationship',
+            ],
+            [
+                'name'    => 'ball.repeatable_items',
+                'type'    => 'repeatable',
+                'label' => '',
+                'subfields' => [
+                    [
+                        'name'    => 'name',
+                        'type'    => 'text',
+                        'label'   => 'Name',
+                    ]
+                ],
+                'wrapper' => [
+                    'class' => 'form-group col-md-4',
                 ],
                 'tab'   => 'Relationship',
             ],

@@ -7,7 +7,7 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 class EditableMonsterCrudController extends MonsterCrudController
 {
-    use \Backpack\EditableColumns\Http\Controllers\Operations\MinorUpdateOperation;
+    // use \Backpack\EditableColumns\Http\Controllers\Operations\MinorUpdateOperation;
 
     public function setup()
     {
@@ -28,16 +28,19 @@ class EditableMonsterCrudController extends MonsterCrudController
         // demo editable_text column
         CRUD::column('text')
             ->label('Text')
-            ->type('editable_text');
+            //->type('editable_text');
+            ->type('text');
 
         CRUD::column('email')
             ->label('Email')
-            ->type('editable_text');
+            //->type('editable_text');
+            ->type('text');
 
         // demo editable_switch column
         CRUD::column('checkbox')
             ->label('Switch')
-            ->type('editable_switch');
+            // ->type('editable_switch');
+            ->type('switch');
 
         // demo editable_checkbox column
         // CRUD::column('editable_checkbox')
@@ -47,7 +50,8 @@ class EditableMonsterCrudController extends MonsterCrudController
         // demo editable_select column
         CRUD::column('select_from_array')
             ->label('Select')
-            ->type('editable_select')
+            // ->type('editable_select')
+            ->type('select')
             ->options(['one' => 'One', 'two' => 'Two', 'three' => 'Three']);
 
         CRUD::column('text_and_email');
@@ -61,7 +65,8 @@ class EditableMonsterCrudController extends MonsterCrudController
         CRUD::column('fake-text')
             ->label('Fake Text')
             ->type('editable_text')
-            ->fake(true);
+            //->fake(true);
+            ->type('text');
 
         // demo fake editable_switch column
         CRUD::column('fake-switch')
@@ -83,7 +88,12 @@ class EditableMonsterCrudController extends MonsterCrudController
             ->fake(true);
     }
 
-    protected function setupMinorUpdateOperation()
+    // protected function setupMinorUpdateOperation()
+    // {
+    //     $this->crud->setValidation(MonsterRequest::class);
+    // }
+
+    protected function setupUpdateOperation()
     {
         $this->crud->setValidation(MonsterRequest::class);
     }

@@ -16,7 +16,7 @@ class AddColumnsToMonsterTable extends Migration
         Schema::table('monsters', function (Blueprint $table) {
             if (!Schema::hasColumn('belongs_to_nullable', 'belongs_to_non_nullable')) {
                 $table->integer('belongs_to_nullable')->nullable();
-                $table->integer('belongs_to_non_nullable');
+                $table->integer('belongs_to_non_nullable')->default(0);
             }
         });
     }
